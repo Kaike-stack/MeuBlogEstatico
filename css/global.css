@@ -1,0 +1,36 @@
+/* Folhas de estilo do tema / template do site. */
+
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css');
+:root {
+    --fonte-padrao: Consolas;
+    --tamanho-da-fonte: 16px;
+    --cor-do-fundo: #0e0202;
+}
+
+* {
+    box-sizing: border-box;
+    outline: none;
+}
+
+html, body, #wrap {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+body {
+background: var(--cor-do-fundo);
+}
+
+#wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1;
+}
