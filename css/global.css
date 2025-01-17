@@ -6,7 +6,7 @@
 :root {
     --fonte-padrao: sans-serif;
     --tamanho-da-fonte: 16px;
-    --cor-do-fundo: #3c91c9;
+    --cor-do-fundo: #a63c4c;
     --cor-link-padrao: limegreen;
     --cor-link-hover: orange;
 }
@@ -55,7 +55,7 @@ main {
 }
 
 header {
-    background-color: red;
+    background-color: #ffffff;
 }
 
 header img {
@@ -125,5 +125,5 @@ nav span {
 }
 /*Conteúdo central*/
 main {
-    background-color: purple;
+    background-color: #bf6371;
 }
