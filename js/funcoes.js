@@ -12,15 +12,14 @@
  * @param {Date} data - A data a ser formatada.
  * @param {string} formato - O formato desejado ('ISO' ou 'BR').
  * @returns {string} A data formatada conforme o formato especificado.
- */
- function formatarData(data, formato) {
+ **/
+function formatarData(data, formato) {
     const ano = data.getFullYear();
     const mes = String(data.getMonth() + 1).padStart(2, '0');
     const dia = String(data.getDate()).padStart(2, '0');
     const horas = String(data.getHours()).padStart(2, '0');
     const minutos = String(data.getMinutes()).padStart(2, '0');
     const segundos = String(data.getSeconds()).padStart(2, '0');
-
     if (formato === 'ISO') {
         return `${ano}-${mes}-${dia} ${horas}:${minutos}:${segundos}`;
     } else if (formato === 'BR') {
@@ -33,7 +32,7 @@
 /**
  * Obtém a data e hora atual no formato ISO.
  * @returns {string} A data e hora atual no formato ISO.
- */
+ **/
 function agoraISO() {
     const agora = new Date();
     return formatarData(agora, 'ISO');
@@ -43,7 +42,7 @@ function agoraISO() {
  * Converte uma data do formato ISO para o formato BR.
  * @param {string} dataISO - A data no formato ISO (YYYY-MM-DD HH:MM:SS).
  * @returns {string} A data no formato BR (DD/MM/YYYY HH:MM).
- */
+ **/
 function dataISOparaBR(dataISO) {
     const data = new Date(dataISO);
     return formatarData(data, 'BR');
@@ -53,7 +52,7 @@ function dataISOparaBR(dataISO) {
  * Converte uma data do formato JavaScript para o formato ISO.
  * @param {Date} dataJS - A data no formato JavaScript.
  * @returns {string} A data no formato ISO (YYYY-MM-DD HH:MM:SS).
- */
+ **/
 function dataJStoISO(dataJS) {
     const data = new Date(dataJS);
     return formatarData(data, 'ISO');
@@ -70,7 +69,7 @@ function dataJStoISO(dataJS) {
  *     Selecionar por classe: let el = _('.minhaClasse'); // Retorna todos os elementos com a classe "minhaClasse"
  *     Selecionar por tag (ou seletores mais complexos): let el = _('div > p'); // Retorna todos os <p> dentro de <div>
  *     Selecionar elemento por tag: let el = _('i'); // Retorna todos os elementos <i>
- */
+ **/
 function _(seletor) {
     if (seletor.startsWith('#') || seletor.startsWith('.') || seletor.includes(' ')) {
         const resultado = document.querySelectorAll(seletor);
@@ -79,6 +78,16 @@ function _(seletor) {
     return document.querySelectorAll(seletor);
 }
 
+/**
+ * Login no firebase Authentication
+ */
+function fbSigIn(){
+    firebase.auth().signInWithPopup(provider);
+}
+
+/**
+ * Retorna o template HTML padrão do site
+ **/
 function template() {
     return `
 
@@ -98,14 +107,13 @@ function template() {
             <a href="/" title="Página incial"><i class="fa-solid fa-house fa-fw"></i><span>Início</span></a>
             <a href="contatos.html" title="Faça contato conosto"><i class="fa-solid fa-comments fa-fw"></i><span>Contatos</span></a>
             <a href="sobre.html" title="Sobre o site e o autor"><i class="fa-solid fa-circle-info fa-fw"></i><span>Sobre</span></a>
-            <a href="login.html" id="usuarioAcao" title="Logue-se no site"><img src="img/anonimous.png" alt="Faça login"><span>Login</span></a>
+            <a href="login.html" id="usuarioAcao" title="Logue-se no site" data-acao="login"><img src="img/anonimous.png" alt="Faça login" referrerpolicy="no-referrer"><span>Login</span></a>
         </nav>
         <main id="conteudo"></main>
         <footer>
             <a href="/" title="Ir para a página inicial."><i class="fa-solid fa-house fa-fw"></i></a>
             <div>
-                <i class="fa-regular fa-copyright fa-rotate-180 fa-fw"></i>
-                <span>Copyleft 2025 ${site.proprietario}</span>
+                ${site.licensa}
                 <div><a href="privacidade.html">Políticas de Privacidade</a></div>
             </div>
             <a href="#wrap" title="ir para o começo desta página."><i class="fa-solid fa-circle-up fa-fw"></i></a>
